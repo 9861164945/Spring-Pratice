@@ -4,13 +4,26 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
                            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
+
+<!-- Setter Injection -->
     <!-- Dependent Spring bean configuration -->
-    <bean id="ltime" class="java.time.LocalTime" factory-method="now"/>
+    <!-- <bean id="ltime" class="java.time.LocalTime" factory-method="now"/> -->
 
     <!-- Target Spring bean class configuration -->
+    <!-- <bean id="wmg" class="com.sonu.springBeans.WishMessageGenerator"> -->
+    <!-- <property name="time" ref="ltime"/> -->
+    <!-- Setter Injection to inject LocalTime object (ltime) into time property of WishMessageGenerator -->
+    <!-- </bean> -->
+
+<!-- Constructor Injection -->
+    <!-- Target Spring bean class configuration -->
     <bean id="wmg" class="com.sonu.springBeans.WishMessageGenerator">
-        <property name="time" ref="ltime"/>
-        <!-- Setter Injection to inject LocalTime object (ltime) into time property of WishMessageGenerator -->
+        <constructor-arg name="time" ref="ltime"/>
+        <constructor-arg name="date" ref="ldate"/>
     </bean>
+
+<bean id="ltime" class="java.time.LocalTime" factory-method="now"/>
+<bean id="ldate" class="java.time.LocalDate" factory-method="now"/>
 
 </beans>
