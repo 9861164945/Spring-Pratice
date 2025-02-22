@@ -2,15 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans 
-                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+                           http://www.springframework.org/schema/beans/spring-beans.xsd"
+       xmlns:context="http://www.springframework.org/schema/context">
 
-    <!-- Dependent Spring bean configuration -->
+    <!-- Enable Component scanning on the packages -->
+    <context:component-scan base-package="com.sonu.springBeans"/>
+    
+    <!-- Corrected bean definition for LocalDate -->
     <bean id="ldate" class="java.time.LocalDate" factory-method="now"/>
-
-    <!-- Target Spring bean class configuration -->
-    <bean id="ses" class="com.sonu.springBeans.SeasonTracker">
-        <property name="date" ref="ldate"/>
-        <!-- Setter Injection to inject LocalTime object (ltime) into time property of WishMessageGenerator -->
-    </bean>
-
+    
 </beans>
