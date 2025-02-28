@@ -10,12 +10,14 @@ public class DependencyInjectionTest
 	{
 		//  Create IOc container
 		FileSystemXmlApplicationContext ctx=new FileSystemXmlApplicationContext("src/com/sonu/springConfig/applicationContext.xml");
-		//Get Target Spring bean class obj ref
-		WishMessageGenerator gen=ctx.getBean("wmg",WishMessageGenerator.class);
+		//Get Target Spring bean class objref
+		Object obj=ctx.getBean("wmg");
+		WishMessageGenerator gen=(WishMessageGenerator)obj;
 		//Invoke the bean method
-		String result=gen.showWishMessage("sonu");
+		String result=gen.showMessage("sonu");
 		System.out.println("result is::"+result);
 		ctx.close();
+		
 		
 	}
 
